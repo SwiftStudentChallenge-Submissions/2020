@@ -18,7 +18,7 @@ jobs:
     - name: Generate README.md and push changes
       run: |
         swift Script/on_merge.swift
-        swift Script/generated.swift
+        swift Script/generated.swift > README.md
         git config user.name github-actions
         git config user.email github-actions@github.com
         git add .
