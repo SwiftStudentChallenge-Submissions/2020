@@ -1,5 +1,5 @@
 # WWDC 2020 - Swift Student Challenge
-![WWDC2019 Logo](logo.png)
+![WWDC2020 Logo](logo.png)
 
 List of student submissions for the WWDC 2020 Swift Student Challenge.
 
@@ -11,7 +11,6 @@ List of student submissions for the WWDC 2020 Swift Student Challenge.
 5. Select your file, upload and create Pull Request
 6. Wait for review :)
 
-### Submissions
 Submissions: 1\
 Accepted: 1
 

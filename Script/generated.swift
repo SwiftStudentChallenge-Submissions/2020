@@ -7,9 +7,17 @@ var acceptedCount: Int = 0
 var header: String {
 """
 # WWDC \(year) - Swift Student Challenge
-![WWDC2019 Logo](logo.png)
+![WWDC\(year) Logo](logo.png)
 
 List of student submissions for the WWDC \(year) Swift Student Challenge.
+
+### How to add your submission?
+1. Download file template: [sample_submission.swift](https://github.com)
+2. Edit the file in any IDE
+3. Rename it with your name (eg. `johnappleseed.swift`)
+4. Here, on GitHub choose **Create file** -> **Upload files**
+5. Select your file, upload and create Pull Request
+6. Wait for review :)
 
 Submissions: \(submissionsCount)\\
 Accepted: \(acceptedCount)
