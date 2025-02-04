@@ -69,8 +69,7 @@ struct Submission {
 }
 
 let submissions: [Submission] = [
-    Submission(name: "Piotr Jeremicz", status: .accepted, technologies: ["UIKit",  "AVKit",  "AVFoundation"], aboutMeUrl: .init(string: "https://github.com/piotrekjeremicz"), sourceUrl: nil, videoUrl: .init(string: "https://youtu.be/H4da5dqhcxY")),
-    Submission(name: "Jan Kowalski", status: .accepted, technologies: ["SwiftUI"], aboutMeUrl: nil, sourceUrl: nil, videoUrl: nil)
+    Submission(name: "Piotr Jeremicz", status: .accepted, technologies: ["UIKit",  "AVKit",  "AVFoundation"], aboutMeUrl: .init(string: "https://github.com/piotrekjeremicz"), sourceUrl: nil, videoUrl: .init(string: "https://youtu.be/H4da5dqhcxY"))
 ].sorted { $0.name < $1.name}
 
 submissionsCount = submissions.count
