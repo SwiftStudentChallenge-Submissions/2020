@@ -11,9 +11,10 @@ List of student submissions for the WWDC 2020 Swift Student Challenge.
 5. Select your file, upload and create Pull Request
 6. Wait for review :)
 
-Submissions: 1\
-Accepted: 1
+Submissions: 2\
+Accepted: 2
 
 | Name | Source |    Video    | Technologies | Status |
 |------|--------|-------------|--------------|--------|
+|Jan Kowalski|-|-|SwiftUI|Accepted|
 |[Piotr Jeremicz](https://github.com/piotrekjeremicz)|-|[YouTube](https://youtu.be/H4da5dqhcxY)|UIKit, AVKit, AVFoundation|Accepted|

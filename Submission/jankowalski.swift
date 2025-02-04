@@ -1,4 +1,4 @@
-let _ = Submission(
+Submission(
     name: "Jan Kowalski",
     status: .accepted,
     technologies: ["SwiftUI"],
