@@ -20,7 +20,7 @@ struct Submission {
     }
 }
 let _ = Submission(
-    name: "Piotrek Jeremicz,
+    name: "Piotrek Jeremicz",
     status: .accepted,
     technologies: ["UIKit", "AVKit", "AVFoundation"],
     
