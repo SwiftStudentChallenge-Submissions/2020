@@ -11,9 +11,10 @@ List of student submissions for the WWDC 2020 - Swift Student Challenge.
 
 ### Submissions
 
-Submissions: 1\
-Accepted: 0
+Submissions: 2\
+Accepted: 1
 
 | Name | Source |    Video    | Technologies | Status |
 |-----:|:------:|:-----------:|:-------------|:------:|
 |[Jan Kowalski](www.example.com)|[GitHub](www.example.com)|[YouTube](www.example.com)|UIKit|![Rejected](https://img.shields.io/badge/rejected-firebrick?style=for-the-badge)|
+|[Piotrek Jeremicz](https://github.com/piotrekjeremicz)|[GitHub](https://github.com/piotrekjeremicz)|[YouTube](https://youtu.be/H4da5dqhcxY)|UIKit, AVKit, AVFoundation|![Accepted](https://img.shields.io/badge/accepted-green?style=for-the-badge)|

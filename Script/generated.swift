@@ -98,6 +98,7 @@ struct Submission {
 }
 
 let submissions: [Submission] = [
+    Submission(name: "Piotrek Jeremicz", status: .accepted, technologies: ["UIKit",  "AVKit",  "AVFoundation"], aboutMeURLString: "https://github.com/piotrekjeremicz", sourceURLString: "https://github.com/piotrekjeremicz", videoURLString: "https://youtu.be/H4da5dqhcxY"),
     Submission(name: "Jan Kowalski", status: .rejected, technologies: ["UIKit"], aboutMeURLString: "www.example.com", sourceURLString: "www.example.com", videoURLString: "www.example.com")
 ].sorted { $0.name < $1.name}
 
