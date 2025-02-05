@@ -19,7 +19,6 @@ struct Submission {
         case submitted, accepted, rejected
     }
 }
-
 let _ = Submission(
     name: <#T##String#>,
     status: <#T##Status#>,

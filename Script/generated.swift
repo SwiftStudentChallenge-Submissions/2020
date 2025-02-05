@@ -98,8 +98,8 @@ struct Submission {
 }
 
 let submissions: [Submission] = [
-]
-    .sorted { $0.name < $1.name}
+
+].sorted { $0.name < $1.name}
 
 submissionsCount = submissions.count
 acceptedCount = submissions.filter { $0.status == .accepted }.count

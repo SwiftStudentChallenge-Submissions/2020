@@ -1,20 +1,19 @@
 # WWDC 2020 - Swift Student Challenge
 ![WWDC2020 Logo](logo.png)
 
-List of student submissions for the WWDC 2020 Swift Student Challenge.
+List of student submissions for the WWDC 2020 - Swift Student Challenge.
 
 ### How to add your submission?
-1. Download file template: [sample_submission.swift](https://github.com)
-2. Edit the file in any IDE
-3. Rename it with your name (eg. `johnappleseed.swift`)
-4. Here, on GitHub choose **Create file** -> **Upload files**
-5. Select your file, upload and create Pull Request
-6. Wait for review :)
+1. [Click here](https://github.com/SwiftStudentChallenge-Submissions/2020/edit/main/Template.swift) to edit `Template.swift` file
+2. Fill the `Submission` initializer with provided documentation
+3. Rename file with your name (f.e. johnappleseed.swift)
+3. Make new Pull Request and wait for the review
 
-Submissions: 2\
-Accepted: 2
+### Submissions
+
+Submissions: 0\
+Accepted: 0
 
 | Name | Source |    Video    | Technologies | Status |
-|------|--------|-------------|--------------|--------|
-|Jan Kowalski|-|-|SwiftUI|Accepted|
-|[Piotr Jeremicz](https://github.com/piotrekjeremicz)|-|[YouTube](https://youtu.be/H4da5dqhcxY)|UIKit, AVKit, AVFoundation|Accepted|
+|-----:|:------:|:-----------:|:-------------|:------:|
+
