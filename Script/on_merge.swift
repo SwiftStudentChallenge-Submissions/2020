@@ -53,6 +53,10 @@ let fileManager = FileManager.default
 let rootFiles = (try? fileManager.contentsOfDirectory(atPath: ".")) ?? []
 let applicationFiles = rootFiles.filter { $0.hasSuffix(".swift") }
 
+if !fileManager.fileExists(atPath: submissionsDirectoryName) {
+    try? fileManager.createDirectory(atPath: submissionsDirectoryName, withIntermediateDirectories: true, attributes: nil)
+}
+
 for file in applicationFiles {
     guard !file.contains("Template.swift") else { continue }
     guard let content = try? String(contentsOfFile: file, encoding: .utf8) else { continue }
