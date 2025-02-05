@@ -20,11 +20,11 @@ struct Submission {
     }
 }
 let _ = Submission(
-    name: <#T##String#>,
-    status: <#T##Status#>,
-    technologies: <#T##[String]#>,
+    name: "",
+    status: "",
+    technologies: ["", ""],
     
-    aboutMeURLString: <#T##String?#>,
-    sourceURLString: <#T##String?#>,
-    videoURLString: <#T##String?#>
+    aboutMeURLString: "https://",
+    sourceURLString: "https://",
+    videoURLString: "https://"
 )
