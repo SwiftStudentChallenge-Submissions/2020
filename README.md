@@ -16,4 +16,4 @@ Accepted: 0
 
 | Name | Source |    Video    | Technologies | Status |
 |-----:|:------:|:-----------:|:-------------|:------:|
-|[Jan Kowalski](www.example.com)|[GitHub](www.example.com)|[YouTube](www.example.com)|UIKit|[Rejected](https://img.shields.io/badge/rejected-firebrick?style=for-the-badge)|
+|[Jan Kowalski](www.example.com)|[GitHub](www.example.com)|[YouTube](www.example.com)|UIKit|![Rejected](https://img.shields.io/badge/rejected-firebrick?style=for-the-badge)|
