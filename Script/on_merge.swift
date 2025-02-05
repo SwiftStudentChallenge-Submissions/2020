@@ -156,7 +156,7 @@ struct Submission {
         
         let technologiesRow = technologies.joined(separator: ", ")
         
-        let statusRow: String = "[\(status.rawValue)](\(status.iconURLString))"
+        let statusRow: String = "![\(status.rawValue)](\(status.iconURLString))"
         
         return "|" + [
             nameRow,
