@@ -191,6 +191,7 @@ for file in submissionFiles {
     guard !content.isEmpty, content.contains("Submission(") else { continue }
     
     let modifiedContent = content
+        .replacingOccurrences(of: "let _ = ", with: "")
         .replacingOccurrences(of: "\n", with: "")
         .replacingOccurrences(of: "    ", with: "")
         .split(separator: ",")
