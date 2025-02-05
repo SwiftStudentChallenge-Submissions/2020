@@ -1,25 +1,52 @@
+//
+//  on_merge.swift
+//
+//  A simple script to process files and generate a generated.swift file.
+//  It's not supposed to be pretty, it's supposed to work. 😉
+//
+//  Created by Piotr Jeremicz on 4.02.2025.
+//
+
 import Foundation
 
 // MARK: - Constants
 let submissionsDirectoryName = "Submission"
-let templatePrefix = "let _ = "
-let templateSuffix = """
-
-// MARK: - TEMPLATE, leave it as it is
+let templatePrefix = #"""
+/// The submission model that represents the application sent by the challenge participant
+/// - Parameters:
+///   - name: Your name (e.g. John Appleseed)
+///   - status: Enum with three values: submitted, accepted, rejected
+///   - technologies: Array of String Elements with framework names (e.g. `["SwiftUI", "RealityKit", "CoreGraphic"]`)
+///   - aboutMeURLString: Absolute String representing URL, the webpage about you (e.g. `"https://linkedin.com/in/johnappleseed")
+///   - sourceURLString: Absolute String representing URL, source code of your project (e.g. `"https://github.com/johnappleseed/wwdc2025"`)
+///   - videoURLString: Absolute String representing URL, youtube video about your project (e.g. `"https://youtu.be/H4da5dqhcxY"`)
 struct Submission {
     let name: String
     let status: Status
     let technologies: [String]
     
-    let aboutMeUrl: URL?
-    let sourceUrl: URL?
-    let videoUrl: URL?
+    let aboutMeURLString: String?
+    let sourceURLString: String
+    let videoURLString: String?
     
     enum Status {
         case submitted, accepted, rejected
     }
 }
-"""
+
+"""#
+
+let templateSuffix = #"""
+let _ = Submission(
+    name: <#T##String#>,
+    status: <#T##Status#>,
+    technologies: <#T##[String]#>,
+    
+    aboutMeURLString: <#T##String?#>,
+    sourceURLString: <#T##String?#>,
+    videoURLString: <#T##String?#>
+)
+"""#
 
 // MARK: - Script
 let fileManager = FileManager.default
@@ -27,14 +54,10 @@ let rootFiles = (try? fileManager.contentsOfDirectory(atPath: ".")) ?? []
 let applicationFiles = rootFiles.filter { $0.hasSuffix(".swift") }
 
 for file in applicationFiles {
+    guard !file.contains("Template.swift") else { continue }
     guard let content = try? String(contentsOfFile: file, encoding: .utf8) else { continue }
     
-    let modifiedContent = content
-        .replacingOccurrences(of: templatePrefix, with: "")
-        .replacingOccurrences(of: templateSuffix, with: "")
-        .replacingOccurrences(of: "\n\n", with: "")
-    
-    
+    let modifiedContent = content.replacingOccurrences(of: templatePrefix, with: "")
     try? modifiedContent.write(toFile: "\(submissionsDirectoryName)/\(file)", atomically: true, encoding: .utf8)
     try? fileManager.removeItem(atPath: "\(file)")
 }
@@ -42,65 +65,86 @@ for file in applicationFiles {
 // MARK: - Generator
 
 let generatedPrefix = #"""
+//
+//  generated.swift
+//
+//  A simple script to generate a README.md file.
+//  It's not supposed to be pretty, it's supposed to work. 😉
+//
+//  Created by Piotr Jeremicz on 4.02.2025.
+//
+
 import Foundation
 
 let year = 2020
-
-var submissionsCount: Int = 0
-var acceptedCount: Int = 0
+let name = "Swift Student Challenge"
 var header: String {
 """
-# WWDC \(year) - Swift Student Challenge
+# WWDC \(year) - \(name)
 ![WWDC\(year) Logo](logo.png)
 
-List of student submissions for the WWDC \(year) Swift Student Challenge.
+List of student submissions for the WWDC \(year) - \(name).
 
 ### How to add your submission?
-1. Download file template: [sample_submission.swift](https://github.com)
-2. Edit the file in any IDE
-3. Rename it with your name (eg. `johnappleseed.swift`)
-4. Here, on GitHub choose **Create file** -> **Upload files**
-5. Select your file, upload and create Pull Request
-6. Wait for review :)
+1. [Click here](https://github.com/SwiftStudentChallenge-Submissions/\(year)/edit/main/Template.swift) to edit `Template.swift` file
+2. Fill the `Submission` initializer with provided documentation
+3. Rename file with your name (f.e. johnappleseed.swift)
+3. Make new Pull Request and wait for the review
+
+### Submissions
 
 Submissions: \(submissionsCount)\\
 Accepted: \(acceptedCount)
 
 | Name | Source |    Video    | Technologies | Status |
-|------|--------|-------------|--------------|--------|
+|-----:|:------:|:-----------:|:-------------|:------:|
 
 """
 }
+
+var submissionsCount: Int = 0
+var acceptedCount: Int = 0
 
 struct Submission {
     let name: String
     let status: Status
     let technologies: [String]
     
-    let aboutMeUrl: URL?
-    let sourceUrl: URL?
-    let videoUrl: URL?
+    let aboutMeURLString: String?
+    let sourceURLString: String
+    let videoURLString: String?
     
     enum Status: String {
         case submitted = "Submitted"
         case accepted = "Accepted"
         case rejected = "Rejected"
+        
+        var iconURLString: String {
+            switch self {
+            case .submitted:
+                "https://img.shields.io/badge/submitted-grey?style=for-the-badge"
+            case .accepted:
+                "https://img.shields.io/badge/accepted-green?style=for-the-badge"
+            case .rejected:
+                "https://img.shields.io/badge/rejected-firebrick?style=for-the-badge"
+            }
+        }
     }
     
     var row: String {
-        let nameRow = if let aboutMeUrl {
+        let nameRow = if let aboutMeUrl = URL(string: aboutMeURLString ?? "") {
             "[\(name)](\(aboutMeUrl.absoluteString))"
         } else {
             "\(name)"
         }
         
-        let sourceRow: String = if let sourceUrl {
+        let sourceRow: String = if let sourceUrl = URL(string: sourceURLString) {
             "[GitHub](\(sourceUrl.absoluteString))"
         } else {
             "-"
         }
         
-        let videoUrl = if let videoUrl {
+        let videoUrl = if let videoUrl = URL(string: videoURLString ?? "") {
             "[YouTube](\(videoUrl.absoluteString))"
         } else {
             "-"
@@ -108,7 +152,7 @@ struct Submission {
         
         let technologiesRow = technologies.joined(separator: ", ")
         
-        let statusRow: String = status.rawValue
+        let statusRow: String = "[\(status.rawValue)](\(status.iconURLString))"
         
         return "|" + [
             nameRow,
@@ -153,3 +197,6 @@ for file in submissionFiles {
 
 let generatedFile = generatedPrefix + submissions.joined(separator: ",\n") + generatedSuffix
 try? generatedFile.write(toFile: "Script/generated.swift", atomically: true, encoding: .utf8)
+
+let newTemplateFile = templatePrefix + templateSuffix
+try? newTemplateFile.write(toFile: "Template.swift", atomically: true, encoding: .utf8)
